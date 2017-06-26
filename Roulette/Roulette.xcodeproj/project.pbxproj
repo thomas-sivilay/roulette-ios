@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8D1F6341F0102420094F445 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6301F0100A10094F445 /* RxSwift.framework */; };
+		C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6311F0100A10094F445 /* RxCocoa.framework */; };
 		C8D81AF61F00F522000D5375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81AF51F00F522000D5375 /* AppDelegate.swift */; };
 		C8D81AF81F00F522000D5375 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81AF71F00F522000D5375 /* ViewController.swift */; };
 		C8D81AFB1F00F522000D5375 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AF91F00F522000D5375 /* Main.storyboard */; };
@@ -26,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C8D1F6301F0100A10094F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		C8D1F6311F0100A10094F445 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		C8D1F6331F0101630094F445 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		C8D81AF21F00F522000D5375 /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D81AF51F00F522000D5375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D81AF71F00F522000D5375 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D1F6341F0102420094F445 /* RxSwift.framework in Frameworks */,
+				C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +89,23 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		C8D1F62F1F0100A00094F445 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8D1F6331F0101630094F445 /* RxTest.framework */,
+				C8D1F6311F0100A10094F445 /* RxCocoa.framework */,
+				C8D1F6301F0100A10094F445 /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C8D81AE91F00F522000D5375 = {
 			isa = PBXGroup;
 			children = (
 				C8D81AF41F00F522000D5375 /* Roulette */,
 				C8D81B091F00F522000D5375 /* RouletteTests */,
 				C8D81AF31F00F522000D5375 /* Products */,
+				C8D1F62F1F0100A00094F445 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +148,7 @@
 				C8D81AEE1F00F522000D5375 /* Sources */,
 				C8D81AEF1F00F522000D5375 /* Frameworks */,
 				C8D81AF01F00F522000D5375 /* Resources */,
+				C8D1F6321F0100B20094F445 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -215,6 +234,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C8D1F6321F0100B20094F445 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8D81AEE1F00F522000D5375 /* Sources */ = {
@@ -372,6 +411,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4DHLLS39V8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Roulette/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TS.Roulette;
@@ -386,6 +429,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4DHLLS39V8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Roulette/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TS.Roulette;
