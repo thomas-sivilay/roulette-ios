@@ -14,9 +14,10 @@
 		C8D1F63D1F011C6D0094F445 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F63C1F011C6D0094F445 /* HomeCoordinator.swift */; };
 		C8D1F6431F011CAF0094F445 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F6421F011CAF0094F445 /* Coordinator.swift */; };
 		C8D1F6451F011CC60094F445 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F6441F011CC60094F445 /* AppCoordinator.swift */; };
+		C8D1F6471F0142C50094F445 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6461F0142980094F445 /* SnapKit.framework */; };
+		C8D1F6491F0153BC0094F445 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6481F0153AB0094F445 /* RxDataSources.framework */; };
 		C8D81AF61F00F522000D5375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81AF51F00F522000D5375 /* AppDelegate.swift */; };
 		C8D81AF81F00F522000D5375 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81AF71F00F522000D5375 /* HomeViewController.swift */; };
-		C8D81AFB1F00F522000D5375 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AF91F00F522000D5375 /* Main.storyboard */; };
 		C8D81AFD1F00F522000D5375 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AFC1F00F522000D5375 /* Assets.xcassets */; };
 		C8D81B001F00F522000D5375 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AFE1F00F522000D5375 /* LaunchScreen.storyboard */; };
 		C8D81B0B1F00F522000D5375 /* RouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81B0A1F00F522000D5375 /* RouletteTests.swift */; };
@@ -41,10 +42,11 @@
 		C8D1F63C1F011C6D0094F445 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C8D1F6421F011CAF0094F445 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C8D1F6441F011CC60094F445 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C8D1F6461F0142980094F445 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		C8D1F6481F0153AB0094F445 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		C8D81AF21F00F522000D5375 /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D81AF51F00F522000D5375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D81AF71F00F522000D5375 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C8D81AFA1F00F522000D5375 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8D81AFC1F00F522000D5375 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D81AFF1F00F522000D5375 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8D81B011F00F522000D5375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +61,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8D1F6341F0102420094F445 /* RxSwift.framework in Frameworks */,
+				C8D1F6491F0153BC0094F445 /* RxDataSources.framework in Frameworks */,
 				C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */,
+				C8D1F6471F0142C50094F445 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +91,6 @@
 			children = (
 				C8D81AFE1F00F522000D5375 /* LaunchScreen.storyboard */,
 				C8D81AFC1F00F522000D5375 /* Assets.xcassets */,
-				C8D81AF91F00F522000D5375 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -103,6 +106,8 @@
 		C8D1F62F1F0100A00094F445 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8D1F6481F0153AB0094F445 /* RxDataSources.framework */,
+				C8D1F6461F0142980094F445 /* SnapKit.framework */,
 				C8D1F6331F0101630094F445 /* RxTest.framework */,
 				C8D1F6311F0100A10094F445 /* RxCocoa.framework */,
 				C8D1F6301F0100A10094F445 /* RxSwift.framework */,
@@ -277,7 +282,6 @@
 			files = (
 				C8D81B001F00F522000D5375 /* LaunchScreen.storyboard in Resources */,
 				C8D81AFD1F00F522000D5375 /* Assets.xcassets in Resources */,
-				C8D81AFB1F00F522000D5375 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,10 +303,14 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SnapKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -344,14 +352,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C8D81AF91F00F522000D5375 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8D81AFA1F00F522000D5375 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C8D81AFE1F00F522000D5375 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

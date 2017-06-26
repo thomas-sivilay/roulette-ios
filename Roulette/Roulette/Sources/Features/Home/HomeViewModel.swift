@@ -7,7 +7,32 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-struct HomeViewModel {
+final class HomeViewModel {
     
+    // MARK: - Nested
+    
+    struct State {
+        let choices: [String]?
+    }
+    
+    // MARK: - Properties
+    
+    private var mutableState = PublishSubject<State>()
+    
+    var state: Driver<State> {
+        return mutableState.asDriver(onErrorJustReturn: State(choices: nil))
+    }
+    
+    // MARK: - Initializer
+    
+    init(state: State) {
+        self.mutableState.onNext(state)
+    }
+    
+    func reduce(action: HomeView.Action) {
+        
+    }
 }

@@ -7,14 +7,33 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
+import RxCocoa
 
 final class HomeView: UIView {
+    
+    // MARK: - Nested
+    
+    enum Action {
+        
+    }
+    
+    // MARK: - Properties
+    
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    private let action: PublishSubject<HomeView.Action>
+    var rx_action: Observable<HomeView.Action> {
+        return action.asObservable()
+    }
     
     // MARK: - Initializers
     
     init() {
+        action = PublishSubject<HomeView.Action>()
         super.init(frame: .zero)
-        setup()
+        setUp()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,8 +42,27 @@ final class HomeView: UIView {
     
     // MARK: - Methods
     
-    private func setup() {
-        print("Toto")
+    func update(state: Driver<HomeViewModel.State>) {
+//        state
+//            .map { $0.choices }
+//            .distinctUntilChanged()
+        
+//        collectionView.rx.setDataSource()
+    }
+    
+    // MARK: Private
+    
+    private func setUp() {
+        setUpCollectionView()
+    }
+    
+    private func setUpCollectionView() {
+        collectionView.backgroundColor = UIColor.red
+        addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
