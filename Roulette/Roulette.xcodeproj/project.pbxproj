@@ -16,11 +16,14 @@
 		C8D1F6451F011CC60094F445 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F6441F011CC60094F445 /* AppCoordinator.swift */; };
 		C8D1F6471F0142C50094F445 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6461F0142980094F445 /* SnapKit.framework */; };
 		C8D1F6491F0153BC0094F445 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6481F0153AB0094F445 /* RxDataSources.framework */; };
+		C8D1F64C1F0155910094F445 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F64B1F0155910094F445 /* HomeCell.swift */; };
+		C8D1F64E1F0155A70094F445 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F64D1F0155A70094F445 /* HomeCellViewModel.swift */; };
 		C8D81AF61F00F522000D5375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81AF51F00F522000D5375 /* AppDelegate.swift */; };
 		C8D81AF81F00F522000D5375 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81AF71F00F522000D5375 /* HomeViewController.swift */; };
 		C8D81AFD1F00F522000D5375 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AFC1F00F522000D5375 /* Assets.xcassets */; };
 		C8D81B001F00F522000D5375 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AFE1F00F522000D5375 /* LaunchScreen.storyboard */; };
 		C8D81B0B1F00F522000D5375 /* RouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81B0A1F00F522000D5375 /* RouletteTests.swift */; };
+		C8DD8BD61F0296FC007FAD52 /* HomeCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD8BD51F0296FC007FAD52 /* HomeCollectionFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,8 @@
 		C8D1F6441F011CC60094F445 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C8D1F6461F0142980094F445 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		C8D1F6481F0153AB0094F445 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		C8D1F64B1F0155910094F445 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		C8D1F64D1F0155A70094F445 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		C8D81AF21F00F522000D5375 /* Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D81AF51F00F522000D5375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D81AF71F00F522000D5375 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		C8D81B061F00F522000D5375 /* RouletteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouletteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D81B0A1F00F522000D5375 /* RouletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteTests.swift; sourceTree = "<group>"; };
 		C8D81B0C1F00F522000D5375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8DD8BD51F0296FC007FAD52 /* HomeCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +124,12 @@
 		C8D1F6371F011AC60094F445 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C8D1F64A1F0155820094F445 /* Home Cell */,
 				C8D81AF71F00F522000D5375 /* HomeViewController.swift */,
 				C8D1F6381F011AEA0094F445 /* HomeView.swift */,
 				C8D1F63A1F011AF20094F445 /* HomeViewModel.swift */,
 				C8D1F63C1F011C6D0094F445 /* HomeCoordinator.swift */,
+				C8DD8BD51F0296FC007FAD52 /* HomeCollectionFlowLayout.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -157,6 +165,15 @@
 				C8D1F6421F011CAF0094F445 /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C8D1F64A1F0155820094F445 /* Home Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C8D1F64B1F0155910094F445 /* HomeCell.swift */,
+				C8D1F64D1F0155A70094F445 /* HomeCellViewModel.swift */,
+			);
+			path = "Home Cell";
 			sourceTree = "<group>";
 		};
 		C8D81AE91F00F522000D5375 = {
@@ -325,10 +342,13 @@
 			files = (
 				C8D1F6391F011AEA0094F445 /* HomeView.swift in Sources */,
 				C8D81AF81F00F522000D5375 /* HomeViewController.swift in Sources */,
+				C8D1F64C1F0155910094F445 /* HomeCell.swift in Sources */,
 				C8D1F6431F011CAF0094F445 /* Coordinator.swift in Sources */,
 				C8D1F63D1F011C6D0094F445 /* HomeCoordinator.swift in Sources */,
+				C8D1F64E1F0155A70094F445 /* HomeCellViewModel.swift in Sources */,
 				C8D81AF61F00F522000D5375 /* AppDelegate.swift in Sources */,
 				C8D1F63B1F011AF20094F445 /* HomeViewModel.swift in Sources */,
+				C8DD8BD61F0296FC007FAD52 /* HomeCollectionFlowLayout.swift in Sources */,
 				C8D1F6451F011CC60094F445 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

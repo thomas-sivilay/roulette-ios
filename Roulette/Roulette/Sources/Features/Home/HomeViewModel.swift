@@ -25,12 +25,14 @@ final class HomeViewModel {
     var state: Driver<State> {
         return mutableState.asDriver(onErrorJustReturn: State(choices: nil))
     }
-    
+        
     // MARK: - Initializer
     
     init(state: State) {
         self.mutableState.onNext(state)
     }
+    
+    // MARK: - Methods
     
     func reduce(action: HomeView.Action) {
         
