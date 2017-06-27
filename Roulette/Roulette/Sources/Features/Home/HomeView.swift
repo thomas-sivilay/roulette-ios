@@ -63,7 +63,7 @@ final class HomeView: UIView {
     }
     
     private func registerCells() {
-        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(HomeCell.self)
     }
     
     private func bind(with viewModel: HomeViewModel) {
@@ -74,7 +74,7 @@ final class HomeView: UIView {
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, HomeCellViewModel>>()
         
         dataSource.configureCell = { (dataSource, cv, indexPath, element) in
-            let cell = cv.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCell
+            let cell: HomeCell = cv.dequeueReusableCell(for: indexPath)
             cell.configure(with: element)
             return cell
         }

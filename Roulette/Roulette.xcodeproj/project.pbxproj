@@ -24,6 +24,7 @@
 		C8D81B001F00F522000D5375 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D81AFE1F00F522000D5375 /* LaunchScreen.storyboard */; };
 		C8D81B0B1F00F522000D5375 /* RouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D81B0A1F00F522000D5375 /* RouletteTests.swift */; };
 		C8DD8BD61F0296FC007FAD52 /* HomeCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD8BD51F0296FC007FAD52 /* HomeCollectionFlowLayout.swift */; };
+		C8DD8BD91F02A442007FAD52 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD8BD81F02A442007FAD52 /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		C8D81B0A1F00F522000D5375 /* RouletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteTests.swift; sourceTree = "<group>"; };
 		C8D81B0C1F00F522000D5375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8DD8BD51F0296FC007FAD52 /* HomeCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		C8DD8BD81F02A442007FAD52 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		C8D1F6401F011CA10094F445 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C8DD8BD71F02A432007FAD52 /* Reusable */,
 				C8D1F6411F011CA40094F445 /* Coordinator */,
 			);
 			path = Core;
@@ -213,6 +216,14 @@
 				C8D81B0C1F00F522000D5375 /* Info.plist */,
 			);
 			path = RouletteTests;
+			sourceTree = "<group>";
+		};
+		C8DD8BD71F02A432007FAD52 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				C8DD8BD81F02A442007FAD52 /* Reusable.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +355,7 @@
 				C8D81AF81F00F522000D5375 /* HomeViewController.swift in Sources */,
 				C8D1F64C1F0155910094F445 /* HomeCell.swift in Sources */,
 				C8D1F6431F011CAF0094F445 /* Coordinator.swift in Sources */,
+				C8DD8BD91F02A442007FAD52 /* Reusable.swift in Sources */,
 				C8D1F63D1F011C6D0094F445 /* HomeCoordinator.swift in Sources */,
 				C8D1F64E1F0155A70094F445 /* HomeCellViewModel.swift in Sources */,
 				C8D81AF61F00F522000D5375 /* AppDelegate.swift in Sources */,
