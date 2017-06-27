@@ -9,32 +9,26 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
-final class HomeViewModel {
-    
-    // MARK: - Nested
-    
-    struct State {
-        let choices: [String]?
-    }
+protocol HomeViewModelOutput {
+    var choices: Observable<[SectionModel<String, HomeCellViewModel>]> { get }
+}
+
+final class HomeViewModel: HomeViewModelOutput {
     
     // MARK: - Properties
     
-    private var mutableState = PublishSubject<State>()
+    var choices: Observable<[SectionModel<String, HomeCellViewModel>]>
     
-    var state: Driver<State> {
-        return mutableState.asDriver(onErrorJustReturn: State(choices: nil))
-    }
-        
     // MARK: - Initializer
     
-    init(state: State) {
-        self.mutableState.onNext(state)
-    }
-    
-    // MARK: - Methods
-    
-    func reduce(action: HomeView.Action) {
+    init(choices: [String]) {
+        let items = choices
+            .flatMap {  HomeCellViewModel(state: HomeCellViewModel.State(choice: $0)) }
         
+        self.choices = Observable.just([
+            SectionModel(model: "First section", items: items),
+            ])
     }
 }

@@ -22,12 +22,10 @@ final class HomeViewController: UIViewController {
     // MARK: - Initializers
     
     init() {
-        homeView = HomeView()
-        viewModel = HomeViewModel(state: HomeViewModel.State(choices: [String]()))
+        viewModel = HomeViewModel(choices: ["Choice 1", "🎅 - Choice 2", "👮 - Choice 3", "🗣 - Choice 4"])
+        homeView = HomeView(viewModel: viewModel)
         bag = DisposeBag()
-        super.init(nibName: nil, bundle: nil)
-        
-        bind()
+        super.init(nibName: nil, bundle: nil)        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,19 +36,6 @@ final class HomeViewController: UIViewController {
     
     override func loadView() {
         self.view = homeView
-    }
-    
-    // MARK: - Methods
-    
-    // MARK: Private
-    
-    private func bind() {
-        homeView.update(state: viewModel.state)
-        homeView.rx_action.asObservable()
-            .subscribe(onNext: { [weak self] (string) in
-                self?.viewModel.reduce(action: string)
-            })
-            .disposed(by: bag)
     }
 }
 

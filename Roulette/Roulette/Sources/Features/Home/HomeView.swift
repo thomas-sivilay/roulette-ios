@@ -32,12 +32,12 @@ final class HomeView: UIView {
     
     // MARK: - Initializers
     
-    init() {
+    init(viewModel: HomeViewModel) {
         action = PublishSubject<HomeView.Action>()
         bag = DisposeBag()
         super.init(frame: .zero)
         setUp()
-        bind()
+        bind(with: viewModel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,9 +45,6 @@ final class HomeView: UIView {
     }
     
     // MARK: - Methods
-    
-    func update(state: Driver<HomeViewModel.State>) {
-    }
     
     // MARK: Private
     
@@ -69,19 +66,12 @@ final class HomeView: UIView {
         collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "Cell")
     }
     
-    private func bind() {
-        bindCollectionView()
+    private func bind(with viewModel: HomeViewModel) {
+        bindCollectionView(with: viewModel)
     }
     
-    private func bindCollectionView() {
+    private func bindCollectionView(with viewModel: HomeViewModel) {
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, HomeCellViewModel>>()
-        
-        let items = Observable.just([
-            SectionModel(model: "First section", items: [
-                HomeCellViewModel(state: HomeCellViewModel.State(choice: "Choice 1")),
-                HomeCellViewModel(state: HomeCellViewModel.State(choice: "Choice 2")),
-                ]),
-            ])
         
         dataSource.configureCell = { (dataSource, cv, indexPath, element) in
             let cell = cv.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCell
@@ -89,7 +79,8 @@ final class HomeView: UIView {
             return cell
         }
         
-        items.bind(to: collectionView.rx.items(dataSource: dataSource))
+        viewModel.choices
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
     }
 }
