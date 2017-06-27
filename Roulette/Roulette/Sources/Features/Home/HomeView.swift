@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 import RxSwift
-import RxCocoa
 import RxDataSources
 
 final class HomeView: UIView {
@@ -17,11 +16,13 @@ final class HomeView: UIView {
     // MARK: - Nested
     
     enum Action {
+        case addNew(choice: String)
     }
     
     // MARK: - Properties
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: HomeCollectionFlowLayout())
+    private let newChoiceTextField = UITextField()
     
     private let action: PublishSubject<HomeView.Action>
     var rx_action: Observable<HomeView.Action> {
@@ -38,6 +39,7 @@ final class HomeView: UIView {
         super.init(frame: .zero)
         setUp()
         bind(with: viewModel)
+        viewModel.bind(input: rx_action)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,16 +51,19 @@ final class HomeView: UIView {
     // MARK: Private
     
     private func setUp() {
+        backgroundColor = UIColor.white
+        
         setUpCollectionView()
+        setUpNewChoiceTextField()
         registerCells()
     }
     
     private func setUpCollectionView() {
-        collectionView.backgroundColor = UIColor.red
+        collectionView.backgroundColor = UIColor.clear
         addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.left.right.equalToSuperview()
         }
     }
     
@@ -66,8 +71,19 @@ final class HomeView: UIView {
         collectionView.register(HomeCell.self)
     }
     
+    private func setUpNewChoiceTextField() {
+        addSubview(newChoiceTextField)
+        
+        newChoiceTextField.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(collectionView.snp.bottomMargin)
+            make.height.equalTo(50)
+        }
+    }
+    
     private func bind(with viewModel: HomeViewModel) {
         bindCollectionView(with: viewModel)
+        bindNewChoiceTextField()
     }
     
     private func bindCollectionView(with viewModel: HomeViewModel) {
@@ -79,8 +95,18 @@ final class HomeView: UIView {
             return cell
         }
         
-        viewModel.choices
+        viewModel.choicesItems
+            .debug()
             .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+    }
+    
+    private func bindNewChoiceTextField() {
+        newChoiceTextField.rx
+            .controlEvent(.editingDidEndOnExit)
+            .subscribe( { [weak self] _ in
+                self?.action.onNext(.addNew(choice: self?.newChoiceTextField.text ?? "TOTO"))
+            })
             .disposed(by: bag)
     }
 }
