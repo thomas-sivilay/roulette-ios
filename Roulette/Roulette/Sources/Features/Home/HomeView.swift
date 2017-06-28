@@ -116,7 +116,6 @@ final class HomeView: UIView {
         }
         
         viewModel.choicesItems
-            .debug()
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
     }

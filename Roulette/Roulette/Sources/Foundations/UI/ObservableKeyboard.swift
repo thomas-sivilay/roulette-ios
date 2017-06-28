@@ -30,7 +30,6 @@ final class ObservableKeyboard {
         
         let willHideFrame = willHideNotification
             .map { notification -> CGRect in
-//                let rectValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
                 return .zero
             }
         
@@ -43,10 +42,7 @@ final class ObservableKeyboard {
         height = Observable
             .of(willHideFrame, willChangeFrame)
             .merge()
-            .debug("😚")
-            .map { frame -> CGFloat in
-                return frame.height
-            }
+            .map { $0.height }
             .asDriver(onErrorJustReturn: 0)
     }
 }
