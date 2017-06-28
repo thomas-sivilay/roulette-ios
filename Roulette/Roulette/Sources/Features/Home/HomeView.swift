@@ -21,8 +21,18 @@ final class HomeView: UIView {
     
     // MARK: - Properties
     
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: HomeCollectionFlowLayout())
-    private let newChoiceTextField = UITextField()
+    private let scrollViewKeyboardAnimator: ScrollViewKeyboardAnimator
+    private let scrollView = UIScrollView()
+    private let collectionView: IntrinsicCollectionView = {
+        let cv = IntrinsicCollectionView(frame: .zero, collectionViewLayout: HomeCollectionFlowLayout())
+        cv.backgroundColor = .clear
+        return cv
+    }()
+    private let newChoiceTextField: UITextField = {
+       let textField = UITextField()
+        textField.textAlignment = .center
+        return textField
+    }()
     
     private let action: PublishSubject<HomeView.Action>
     var rx_action: Observable<HomeView.Action> {
@@ -36,6 +46,7 @@ final class HomeView: UIView {
     init(viewModel: HomeViewModel) {
         action = PublishSubject<HomeView.Action>()
         bag = DisposeBag()
+        scrollViewKeyboardAnimator = ScrollViewKeyboardAnimator(with: scrollView)
         super.init(frame: .zero)
         setUp()
         bind(with: viewModel)
@@ -51,19 +62,27 @@ final class HomeView: UIView {
     // MARK: Private
     
     private func setUp() {
-        backgroundColor = UIColor.white
+        backgroundColor = .white
         
+        setUpScrollView()
         setUpCollectionView()
         setUpNewChoiceTextField()
         registerCells()
     }
     
-    private func setUpCollectionView() {
-        collectionView.backgroundColor = UIColor.clear
-        addSubview(collectionView)
+    private func setUpScrollView() {
+        addSubview(scrollView)
         
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func setUpCollectionView() {
+        scrollView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
+            make.left.right.equalToSuperview()
         }
     }
     
@@ -72,18 +91,19 @@ final class HomeView: UIView {
     }
     
     private func setUpNewChoiceTextField() {
-        addSubview(newChoiceTextField)
-        
+        scrollView.addSubview(newChoiceTextField)
         newChoiceTextField.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(collectionView.snp.bottomMargin)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.top.equalTo(collectionView.snp.bottom)
+            make.bottom.equalToSuperview()
             make.height.equalTo(50)
         }
     }
     
     private func bind(with viewModel: HomeViewModel) {
         bindCollectionView(with: viewModel)
-        bindNewChoiceTextField()
+        bindNewChoiceTextField(with: viewModel)
     }
     
     private func bindCollectionView(with viewModel: HomeViewModel) {
@@ -101,11 +121,14 @@ final class HomeView: UIView {
             .disposed(by: bag)
     }
     
-    private func bindNewChoiceTextField() {
+    private func bindNewChoiceTextField(with viewModel: HomeViewModel) {
+        newChoiceTextField.placeholder = viewModel.addNewChoicePlaceholder
+        
         newChoiceTextField.rx
             .controlEvent(.editingDidEndOnExit)
             .subscribe( { [weak self] _ in
                 self?.action.onNext(.addNew(choice: self?.newChoiceTextField.text ?? "TOTO"))
+                self?.newChoiceTextField.text = ""
             })
             .disposed(by: bag)
     }

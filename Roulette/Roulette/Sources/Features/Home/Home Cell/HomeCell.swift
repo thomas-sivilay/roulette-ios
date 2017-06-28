@@ -12,12 +12,18 @@ final class HomeCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    private let titleLabel: UILabel
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textColor = .blue
+        label.textAlignment = .center
+        return label
+    }()
+    
     
     // MARK: - Initializers
     
     override init(frame: CGRect) {
-        titleLabel = UILabel()
         super.init(frame: frame)
         setupView()
     }
@@ -37,13 +43,8 @@ final class HomeCell: UICollectionViewCell {
     // MARK: Private
     
     private func setupView() {
-        titleLabel.textColor = UIColor.blue
-        
         addSubview(titleLabel)
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.bottom.equalToSuperview()
-            make.leadingMargin.trailingMargin.equalTo(20)
+        titleLabel.snp.makeConstraints { make in            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 20, 0, 20))
         }
     }
 }

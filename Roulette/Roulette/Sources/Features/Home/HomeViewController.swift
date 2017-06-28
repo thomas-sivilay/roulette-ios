@@ -21,7 +21,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Initializers
     
     init() {
-        viewModel = HomeViewModel(choices: ["Choice 1", "🎅 - Choice 2", "👮 - Choice 3", "🗣 - Choice 4"])
+        viewModel = HomeViewModel(choices: [])
         homeView = HomeView(viewModel: viewModel)
         bag = DisposeBag()
         super.init(nibName: nil, bundle: nil)        

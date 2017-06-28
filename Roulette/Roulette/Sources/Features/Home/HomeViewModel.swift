@@ -13,10 +13,15 @@ import RxDataSources
 
 protocol HomeViewModelOutput {
     var choicesItems: Observable<[SectionModel<String, HomeCellViewModel>]> { get }
+    var addNewChoicePlaceholder: String { get }
 }
 
 protocol HomeViewModelInput {
     var action: Observable<HomeView.Action> { get }
+}
+
+protocol HomeViewModelIO {
+    var output: HomeViewModelOutput { get }
 }
 
 final class HomeViewModel: HomeViewModelOutput {
@@ -34,6 +39,8 @@ final class HomeViewModel: HomeViewModelOutput {
                 return Observable.just([SectionModel(model: "First section", items: items)])
             }
     }
+    
+    var addNewChoicePlaceholder = "Type something.."
     
     // MARK: - Initializer
     
