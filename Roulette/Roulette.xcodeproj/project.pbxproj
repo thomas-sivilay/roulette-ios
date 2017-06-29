@@ -10,6 +10,10 @@
 		C82F61141F03AAB400BCBC2E /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F61131F03AAB400BCBC2E /* IntrinsicCollectionView.swift */; };
 		C82F61161F03BDBE00BCBC2E /* ScrollViewKeyboardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F61151F03BDBE00BCBC2E /* ScrollViewKeyboardAnimator.swift */; };
 		C82F61181F03BE5B00BCBC2E /* ObservableKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F61171F03BE5B00BCBC2E /* ObservableKeyboard.swift */; };
+		C8B0E42B1F05029A00BF266A /* SpinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E42A1F05029A00BF266A /* SpinViewController.swift */; };
+		C8B0E42D1F0502A200BF266A /* SpinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E42C1F0502A200BF266A /* SpinView.swift */; };
+		C8B0E42F1F0502A900BF266A /* SpinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E42E1F0502A900BF266A /* SpinViewModel.swift */; };
+		C8B0E4311F0502B100BF266A /* SpinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E4301F0502B100BF266A /* SpinCoordinator.swift */; };
 		C8D1F6341F0102420094F445 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6301F0100A10094F445 /* RxSwift.framework */; };
 		C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6311F0100A10094F445 /* RxCocoa.framework */; };
 		C8D1F6391F011AEA0094F445 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F6381F011AEA0094F445 /* HomeView.swift */; };
@@ -44,6 +48,10 @@
 		C82F61131F03AAB400BCBC2E /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
 		C82F61151F03BDBE00BCBC2E /* ScrollViewKeyboardAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboardAnimator.swift; sourceTree = "<group>"; };
 		C82F61171F03BE5B00BCBC2E /* ObservableKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableKeyboard.swift; sourceTree = "<group>"; };
+		C8B0E42A1F05029A00BF266A /* SpinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinViewController.swift; sourceTree = "<group>"; };
+		C8B0E42C1F0502A200BF266A /* SpinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
+		C8B0E42E1F0502A900BF266A /* SpinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinViewModel.swift; sourceTree = "<group>"; };
+		C8B0E4301F0502B100BF266A /* SpinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinCoordinator.swift; sourceTree = "<group>"; };
 		C8D1F6301F0100A10094F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C8D1F6311F0100A10094F445 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C8D1F6331F0101630094F445 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
@@ -99,6 +107,17 @@
 				C82F61171F03BE5B00BCBC2E /* ObservableKeyboard.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		C8B0E4291F05027600BF266A /* Spin */ = {
+			isa = PBXGroup;
+			children = (
+				C8B0E42A1F05029A00BF266A /* SpinViewController.swift */,
+				C8B0E42C1F0502A200BF266A /* SpinView.swift */,
+				C8B0E42E1F0502A900BF266A /* SpinViewModel.swift */,
+				C8B0E4301F0502B100BF266A /* SpinCoordinator.swift */,
+			);
+			path = Spin;
 			sourceTree = "<group>";
 		};
 		C8D1F62B1F00F6510094F445 /* Sources */ = {
@@ -157,6 +176,7 @@
 			children = (
 				C8D1F6441F011CC60094F445 /* AppCoordinator.swift */,
 				C8D1F6371F011AC60094F445 /* Home */,
+				C8B0E4291F05027600BF266A /* Spin */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -372,6 +392,9 @@
 				C8D81AF81F00F522000D5375 /* HomeViewController.swift in Sources */,
 				C8D1F64C1F0155910094F445 /* HomeCell.swift in Sources */,
 				C8D1F6431F011CAF0094F445 /* Coordinator.swift in Sources */,
+				C8B0E42B1F05029A00BF266A /* SpinViewController.swift in Sources */,
+				C8B0E42F1F0502A900BF266A /* SpinViewModel.swift in Sources */,
+				C8B0E4311F0502B100BF266A /* SpinCoordinator.swift in Sources */,
 				C8DD8BD91F02A442007FAD52 /* Reusable.swift in Sources */,
 				C8D1F63D1F011C6D0094F445 /* HomeCoordinator.swift in Sources */,
 				C8D1F64E1F0155A70094F445 /* HomeCellViewModel.swift in Sources */,
@@ -381,6 +404,7 @@
 				C8DD8BD61F0296FC007FAD52 /* HomeCollectionFlowLayout.swift in Sources */,
 				C82F61161F03BDBE00BCBC2E /* ScrollViewKeyboardAnimator.swift in Sources */,
 				C82F61141F03AAB400BCBC2E /* IntrinsicCollectionView.swift in Sources */,
+				C8B0E42D1F0502A200BF266A /* SpinView.swift in Sources */,
 				C8D1F6451F011CC60094F445 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,4 +14,11 @@ final class HomeCoordinator: Coordinator {
     func start() {
         presentingViewController = HomeViewController()
     }
+    
+    // MARK: -
+    
+    private func showSpin() {
+        let spinCoordinator = SpinCoordinator()
+        spinCoordinator.start()
+    }
 }
