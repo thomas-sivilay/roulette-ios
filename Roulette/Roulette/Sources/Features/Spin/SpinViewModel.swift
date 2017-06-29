@@ -7,7 +7,28 @@
 //
 
 import Foundation
+import RxSwift
 
 final class SpinViewModel {
     
+    // MARK: - Properties
+    
+    weak var navigateActionSubscriber: SpinCoordinatorSubscriber?
+    
+    // MARK: - Methods
+    
+    func bind(input: Observable<SpinView.Action>) {        
+        let navigateAction = input
+            .filter { (action) -> Bool in
+                switch action {
+                case SpinView.Action.cancel:
+                    return true
+                }
+            }
+            .map { _ in
+                return SpinCoordinator.NavigationAction.cancel
+        }
+        
+        navigateActionSubscriber?.set(navigationAction: navigateAction)
+    }
 }

@@ -23,25 +23,6 @@ final class HomeView: UIView {
     // MARK: - Properties
     
     private let scrollViewKeyboardAnimator: ScrollViewKeyboardAnimator
-    private let scrollView = UIScrollView()
-    private let collectionView: IntrinsicCollectionView = {
-        let cv = IntrinsicCollectionView(frame: .zero, collectionViewLayout: HomeCollectionFlowLayout())
-        cv.isScrollEnabled = false
-        cv.backgroundColor = .clear
-        return cv
-    }()
-    private let newChoiceTextField: UITextField = {
-       let textField = UITextField()
-        textField.textAlignment = .center
-        return textField
-    }()
-    private let newButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Go", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        return button
-    }()
-    
     private let action: PublishSubject<HomeView.Action>
     var rx_action: Observable<HomeView.Action> {
         return action.asObservable()
@@ -52,9 +33,9 @@ final class HomeView: UIView {
     // MARK: - Initializers
     
     init(viewModel: HomeViewModel) {
-        action = PublishSubject<HomeView.Action>()
-        bag = DisposeBag()
-        scrollViewKeyboardAnimator = ScrollViewKeyboardAnimator(with: scrollView)
+        self.action = PublishSubject<HomeView.Action>()
+        self.bag = DisposeBag()
+        self.scrollViewKeyboardAnimator = ScrollViewKeyboardAnimator(with: scrollView)
         super.init(frame: .zero)
         setUp()
         bind(with: viewModel)
@@ -64,6 +45,30 @@ final class HomeView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - UI Properties
+    
+    private let scrollView = UIScrollView()
+    
+    private let collectionView: IntrinsicCollectionView = {
+        let cv = IntrinsicCollectionView(frame: .zero, collectionViewLayout: HomeCollectionFlowLayout())
+        cv.isScrollEnabled = false
+        cv.backgroundColor = .clear
+        return cv
+    }()
+    
+    private let newChoiceTextField: UITextField = {
+        let textField = UITextField()
+        textField.textAlignment = .center
+        return textField
+    }()
+    
+    private let newButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Go", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
+    }()
     
     // MARK: - Methods
     
@@ -168,3 +173,15 @@ extension HomeView: UITextFieldDelegate {
     }
 }
 
+extension HomeView.Action: Equatable {
+   static func ==(lhs: HomeView.Action, rhs: HomeView.Action) -> Bool {
+        switch (lhs, rhs) {
+        case (.start, .start):
+            return true
+        case (.addNew(let choicesA), .addNew(let choicesB)):
+            return choicesA == choicesB
+        default:
+            return false
+        }
+    }
+}

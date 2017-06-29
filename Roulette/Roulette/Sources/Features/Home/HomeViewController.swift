@@ -20,10 +20,10 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Initializers
     
-    init() {
-        viewModel = HomeViewModel(choices: [])
-        homeView = HomeView(viewModel: viewModel)
-        bag = DisposeBag()
+    init(with viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        self.homeView = HomeView(viewModel: viewModel)
+        self.bag = DisposeBag()
         super.init(nibName: nil, bundle: nil)        
     }
     

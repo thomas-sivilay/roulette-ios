@@ -20,10 +20,10 @@ final class SpinViewController: UIViewController {
     
     // MARK: - Initializers
     
-    init() {
-        viewModel = SpinViewModel()
-        spinView = SpinView(viewModel: viewModel)
-        bag = DisposeBag()
+    init(with viewModel: SpinViewModel) {
+        self.viewModel = viewModel
+        self.spinView = SpinView(viewModel: viewModel)
+        self.bag = DisposeBag()
         super.init(nibName: nil, bundle: nil)
     }
     

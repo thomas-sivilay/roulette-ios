@@ -28,8 +28,6 @@ final class HomeViewModel: HomeViewModelOutput {
     
     // MARK: - Properties
     
-    private var choices: Variable<[String]> = Variable([])
-    
     var choicesItems: Observable<[SectionModel<String, HomeCellViewModel>]> {
         return choices
             .asObservable()
@@ -42,10 +40,15 @@ final class HomeViewModel: HomeViewModelOutput {
     
     var addNewChoicePlaceholder = "Enter a new choice.."
     
+    weak var navigateActionSubscriber: HomeCoordinatorSubscriber?
+    
+    private var choices: Variable<[String]> = Variable([])
+    
     // MARK: - Initializer
     
     init(choices: [String]) {
         self.choices.value = choices
+        
     }
     
     // MARK: - Methods
@@ -56,9 +59,26 @@ final class HomeViewModel: HomeViewModelOutput {
                 switch action {
                 case let .addNew(choice: name):
                     self?.choices.value.append(name)
-                case .start:
-                    print("START")
+                default:
+                    break
                 }
             })
+        
+        let choices = self.choices.value
+        
+        let navigateAction = input
+            .filter { (action) -> Bool in
+                switch action {
+                case HomeView.Action.start:
+                    return true
+                default:
+                    return false
+                }
+            }
+            .map { _ in
+                return HomeCoordinator.NavigationAction.start(choices: choices)
+            }
+        
+        navigateActionSubscriber?.set(navigationAction: navigateAction)
     }
 }
