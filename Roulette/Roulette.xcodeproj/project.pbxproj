@@ -120,6 +120,13 @@
 			path = Spin;
 			sourceTree = "<group>";
 		};
+		C8B0E4321F0544E600BF266A /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Playgrounds;
+			sourceTree = "<group>";
+		};
 		C8D1F62B1F00F6510094F445 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +245,7 @@
 		C8D81AF41F00F522000D5375 /* Roulette */ = {
 			isa = PBXGroup;
 			children = (
+				C8B0E4321F0544E600BF266A /* Playgrounds */,
 				C8D81AF51F00F522000D5375 /* AppDelegate.swift */,
 				C8D81B011F00F522000D5375 /* Info.plist */,
 				C8D1F62B1F00F6510094F445 /* Sources */,
