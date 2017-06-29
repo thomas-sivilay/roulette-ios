@@ -17,6 +17,7 @@ final class HomeView: UIView {
     
     enum Action {
         case addNew(choice: String)
+        case start
     }
     
     // MARK: - Properties
@@ -25,6 +26,7 @@ final class HomeView: UIView {
     private let scrollView = UIScrollView()
     private let collectionView: IntrinsicCollectionView = {
         let cv = IntrinsicCollectionView(frame: .zero, collectionViewLayout: HomeCollectionFlowLayout())
+        cv.isScrollEnabled = false
         cv.backgroundColor = .clear
         return cv
     }()
@@ -32,6 +34,12 @@ final class HomeView: UIView {
        let textField = UITextField()
         textField.textAlignment = .center
         return textField
+    }()
+    private let newButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Go", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        return button
     }()
     
     private let action: PublishSubject<HomeView.Action>
@@ -66,6 +74,7 @@ final class HomeView: UIView {
         
         setUpScrollView()
         setUpCollectionView()
+        setUpNewButton()
         setUpNewChoiceTextField()
         registerCells()
     }
@@ -90,6 +99,15 @@ final class HomeView: UIView {
         collectionView.register(HomeCell.self)
     }
     
+    private func setUpNewButton() {
+        addSubview(newButton)
+        newButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.right.equalToSuperview()
+            make.height.width.equalTo(44)
+        }
+    }
+    
     private func setUpNewChoiceTextField() {
         scrollView.addSubview(newChoiceTextField)
         newChoiceTextField.snp.makeConstraints { make in
@@ -103,6 +121,7 @@ final class HomeView: UIView {
     
     private func bind(with viewModel: HomeViewModel) {
         bindCollectionView(with: viewModel)
+        bindNewButton()
         bindNewChoiceTextField(with: viewModel)
     }
     
@@ -120,16 +139,32 @@ final class HomeView: UIView {
             .disposed(by: bag)
     }
     
-    private func bindNewChoiceTextField(with viewModel: HomeViewModel) {
-        newChoiceTextField.placeholder = viewModel.addNewChoicePlaceholder
-        
-        newChoiceTextField.rx
-            .controlEvent(.editingDidEndOnExit)
-            .subscribe( { [weak self] _ in
-                self?.action.onNext(.addNew(choice: self?.newChoiceTextField.text ?? "TOTO"))
-                self?.newChoiceTextField.text = ""
+    private func bindNewButton() {
+        newButton.rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.action.onNext(.start)
             })
             .disposed(by: bag)
+    }
+    
+    private func bindNewChoiceTextField(with viewModel: HomeViewModel) {
+        newChoiceTextField.placeholder = viewModel.addNewChoicePlaceholder
+        newChoiceTextField.delegate = self
+    }
+}
+
+extension HomeView: UITextFieldDelegate {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let newChoice = textField.text {
+            textField.text = ""
+            action.onNext(.addNew(choice: newChoice))
+        }
+        return false
     }
 }
 

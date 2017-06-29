@@ -40,7 +40,7 @@ final class HomeViewModel: HomeViewModelOutput {
             }
     }
     
-    var addNewChoicePlaceholder = "Type something.."
+    var addNewChoicePlaceholder = "Enter a new choice.."
     
     // MARK: - Initializer
     
@@ -56,6 +56,8 @@ final class HomeViewModel: HomeViewModelOutput {
                 switch action {
                 case let .addNew(choice: name):
                     self?.choices.value.append(name)
+                case .start:
+                    print("START")
                 }
             })
     }

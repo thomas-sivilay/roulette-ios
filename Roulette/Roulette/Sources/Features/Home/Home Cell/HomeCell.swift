@@ -15,7 +15,7 @@ final class HomeCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        label.textColor = .blue
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()
