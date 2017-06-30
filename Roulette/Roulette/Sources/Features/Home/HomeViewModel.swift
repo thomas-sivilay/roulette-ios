@@ -11,35 +11,34 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-protocol HomeViewModelOutput {
-    var choicesItems: Observable<[SectionModel<String, HomeCellViewModel>]> { get }
-    var addNewChoicePlaceholder: String { get }
-}
-
-protocol HomeViewModelInput {
-    var action: Observable<HomeView.Action> { get }
-}
-
-protocol HomeViewModelIO {
-    var output: HomeViewModelOutput { get }
-}
-
-final class HomeViewModel: HomeViewModelOutput {
+final class HomeViewModel {
     
     // MARK: - Properties
     
-    var choicesItems: Observable<[SectionModel<String, HomeCellViewModel>]> {
-        return choices
+    struct Input {
+        var action: Observable<HomeView.Action>
+    }
+    
+    struct Output {
+        var choicesItems: Observable<[SectionModel<String, HomeCellViewModel>]>
+        var addNewChoicePlaceholder: String
+    }
+    
+    var output: Output {
+        let choicesItems = choices
             .asObservable()
             .flatMap { (choices) -> Observable<[SectionModel<String, HomeCellViewModel>]> in
                 let items = choices
                     .flatMap {  HomeCellViewModel(state: HomeCellViewModel.State(choice: $0)) }
                 return Observable.just([SectionModel(model: "First section", items: items)])
             }
+        
+        return Output(
+            choicesItems: choicesItems,
+            addNewChoicePlaceholder: "Enter a new choices.."
+        )
     }
-    
-    var addNewChoicePlaceholder = "Enter a new choice.."
-    
+        
     weak var navigateActionSubscriber: HomeCoordinatorSubscriber?
     
     private var choices: Variable<[String]> = Variable([])
@@ -48,7 +47,6 @@ final class HomeViewModel: HomeViewModelOutput {
     
     init(choices: [String]) {
         self.choices.value = choices
-        
     }
     
     // MARK: - Methods

@@ -139,7 +139,7 @@ final class HomeView: UIView {
             return cell
         }
         
-        viewModel.choicesItems
+        viewModel.output.choicesItems
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
     }
@@ -154,7 +154,7 @@ final class HomeView: UIView {
     }
     
     private func bindNewChoiceTextField(with viewModel: HomeViewModel) {
-        newChoiceTextField.placeholder = viewModel.addNewChoicePlaceholder
+        newChoiceTextField.placeholder = viewModel.output.addNewChoicePlaceholder
         newChoiceTextField.delegate = self
     }
 }

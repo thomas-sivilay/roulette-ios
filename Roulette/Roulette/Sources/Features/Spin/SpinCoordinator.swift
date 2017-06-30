@@ -33,11 +33,7 @@ final class SpinCoordinator: Coordinator {
         self.bag = DisposeBag()
         self.choices = choices
     }
-    
-    deinit {
-        print("DEINIT")
-    }
-    
+        
     // MARK: - Methods
     
     func start() {
