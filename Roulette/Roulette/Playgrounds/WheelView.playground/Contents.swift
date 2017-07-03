@@ -55,12 +55,12 @@ for coordinate in coordinates {
     startAngle = coordinate
 }
 
-let fullRotation = CGFloat(Float.pi * 2)
-
-UIView.animate(withDuration: 2.0, delay: 2.0, animations: {
-    UIView.setAnimationRepeatCount(1000)
-    wheelBackground.transform = CGAffineTransform(rotationAngle: 3.13)
-})
+let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+rotationAnimation.toValue = NSNumber(value: Double.pi * 2)
+rotationAnimation.duration = 1
+rotationAnimation.isCumulative = true
+rotationAnimation.repeatCount = 10
+wheelBackground.layer.add(rotationAnimation, forKey: "rotationAnimation")
 
 PlaygroundPage.current.liveView = view
 PlaygroundPage.current.needsIndefiniteExecution = true
