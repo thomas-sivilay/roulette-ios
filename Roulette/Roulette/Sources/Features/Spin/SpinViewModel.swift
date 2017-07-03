@@ -19,7 +19,7 @@ final class SpinViewModel {
     
     func bind(input: Observable<SpinView.Action>) {        
         let navigateAction = input
-            .filter { (action) -> Bool in
+            .filter { action -> Bool in
                 switch action {
                 case SpinView.Action.cancel:
                     return true
