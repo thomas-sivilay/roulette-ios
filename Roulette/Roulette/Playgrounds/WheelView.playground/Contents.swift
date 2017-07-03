@@ -56,10 +56,12 @@ for coordinate in coordinates {
 }
 
 let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-rotationAnimation.toValue = NSNumber(value: Double.pi * 2)
-rotationAnimation.duration = 1
+rotationAnimation.toValue = NSNumber(value: Double.pi * 2 * 10)
+rotationAnimation.duration = 10
 rotationAnimation.isCumulative = true
-rotationAnimation.repeatCount = 10
+rotationAnimation.repeatCount = 1
+rotationAnimation.timingFunction =
+CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 wheelBackground.layer.add(rotationAnimation, forKey: "rotationAnimation")
 
 PlaygroundPage.current.liveView = view
