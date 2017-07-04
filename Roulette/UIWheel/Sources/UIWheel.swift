@@ -10,11 +10,42 @@ import Foundation
 
 public final class UIWheel: UIView {
     
+    // MARK: - Nested
+    
+    public enum ShiftAlignment {
+        case top
+        case left
+        case right
+        case bottom
+        case manual(degrees: Int)
+        
+        func degrees() -> Int {
+            switch self {
+            case .top:
+                return 270
+            case .left:
+                return 180
+            case .bottom:
+                return 90
+            case .right:
+                return 0
+            case let .manual(degrees):
+                return degrees
+            }
+        }
+    }
+    
     // MARK: - Properties
+    
+    public var shiftAlignment: ShiftAlignment {
+        didSet {
+            drawSublayers()
+        }
+    }
     
     public var choices: [String] {
         didSet {
-            // draw
+            drawSublayers()
         }
     }
     
@@ -22,9 +53,10 @@ public final class UIWheel: UIView {
     
     public override init(frame: CGRect) {
         self.choices = ["1", "2", "3", "4"]
+        self.shiftAlignment = .bottom
         super.init(frame: frame)
         setUp()
-        drawSliceSublayers()
+        drawSublayers()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -40,24 +72,22 @@ public final class UIWheel: UIView {
         layer.cornerRadius = frame.width / 2
     }
     
-    private func drawSliceSublayers() {
-        let r: Double = Double(frame.width)
-        let center = CGPoint(x: frame.width / 2, y: frame.height / 2)
-        var coordinates: [CGPoint] = []
-        var colors: [UIColor] = [.yellow, .blue, .green, .orange, .purple]
-        
-        for i in 0..<choices.count {
-            let angle: Double = Double(i) * Double(360) / Double(choices.count)
-            let radAngle = angle * .pi / 180.0
-            var point = CGPoint.zero
-            point.x = CGFloat(Double(center.x) + r * cos(radAngle))
-            point.y = CGFloat(Double(center.y) + r * sin(radAngle))
-            coordinates.append(point)
+    private func drawSublayers() {
+        cleanSublayers()
+        drawSliceShapeLayers(with: computedPoints(for: choices))
+    }
+    
+    private func drawSliceShapeLayers(with points: [CGPoint]) {
+        guard let last = points.last else {
+            return
         }
         
-        var startAngle = coordinates.first!
+        var colors: [UIColor] = [.blue, .cyan, .green, .orange, .purple, .magenta, .brown]
+        var startPoint = last
         var i = 0
-        for coordinate in coordinates {
+        let unrelativeCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
+        
+        for point in points {
             let shape = CAShapeLayer()
             layer.addSublayer(shape)
             shape.opacity = 1
@@ -66,14 +96,40 @@ public final class UIWheel: UIView {
             shape.fillColor = colors[i].cgColor
             
             let path = UIBezierPath()
-            path.move(to: startAngle)
-            path.addLine(to: coordinate)
-            path.addLine(to: center)
+            path.move(to: startPoint)
+            path.addLine(to: point)
+            path.addLine(to: unrelativeCenter)
             path.close()
             
             shape.path = path.cgPath
             i = i + 1
-            startAngle = coordinate
+            startPoint = point
+        }
+    }
+    
+    private func computedPoints(for choices: [String]) -> [CGPoint] {
+        let r: Double = Double(frame.width)
+        let unrelativeCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
+        var points: [CGPoint] = []
+        
+        for i in 0..<choices.count {
+            let shift = shiftAlignment.degrees()
+            let angle: Double = Double(shift + (360 / choices.count / 2) + (i * 360 / choices.count))
+            let radAngle = angle * .pi / 180.0
+            var point = CGPoint.zero
+            point.x = CGFloat(Double(unrelativeCenter.x) + r * cos(radAngle))
+            point.y = CGFloat(Double(unrelativeCenter.y) + r * sin(radAngle))
+            points.append(point)
+        }
+        
+        return points
+    }
+    
+    private func cleanSublayers() {
+        if let sublayers = layer.sublayers {
+            for sublayer in sublayers {
+                sublayer.removeFromSuperlayer()
+            }
         }
     }
 }
