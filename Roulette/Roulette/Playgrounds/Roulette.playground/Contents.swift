@@ -61,9 +61,10 @@ rotationAnimation.duration = 10
 rotationAnimation.isCumulative = true
 rotationAnimation.repeatCount = 1
 rotationAnimation.timingFunction =
-CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 wheelBackground.layer.add(rotationAnimation, forKey: "rotationAnimation")
 
 PlaygroundPage.current.liveView = view
 PlaygroundPage.current.needsIndefiniteExecution = true
+
 
