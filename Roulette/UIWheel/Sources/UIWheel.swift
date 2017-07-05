@@ -75,17 +75,32 @@ public final class UIWheel: UIView {
     
     public func animate() {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = NSNumber(value: Double.pi * 2 * 3)
+        
+        let angle = Double(360 / choices.count)
+        print("angle: \(angle)")
+        let radAngle = Double(angle * .pi / 180.0)
+        print("rad angle: \(radAngle)")
+        let random = Double(randomInt(min: 10, max: 30))
+        print("random: \(random)")
+        let value = radAngle * random
+        print("value: \(value)")
+        
+        rotationAnimation.toValue = NSNumber(value: value)
         rotationAnimation.duration = 4
         rotationAnimation.isCumulative = true
         rotationAnimation.repeatCount = 1
+        rotationAnimation.fillMode = kCAFillModeForwards
         rotationAnimation.timingFunction =
             CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        rotationAnimation.isRemovedOnCompletion = true
+        rotationAnimation.isRemovedOnCompletion = false
         animatingLayer.add(rotationAnimation, forKey: "rotationAnimation")
     }
     
     // MARK: Private
+    
+    private func randomInt(min: Int, max:Int) -> Int {
+        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
+    }
     
     private func setUp() {
         clipsToBounds = true
