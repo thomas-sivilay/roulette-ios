@@ -74,55 +74,71 @@ public final class UIWheel: UIView {
     
     private func drawSublayers() {
         cleanSublayers()
-        drawSliceShapeLayers(with: computedPoints(for: choices))
+        drawSliceShapeLayers(with: computedPoints(for: choices), on: layer)
     }
     
-    private func drawSliceShapeLayers(with points: [CGPoint]) {
-        guard let last = points.last else {
+    private func drawSliceShapeLayers(with points: [CGPoint], on layer: CALayer) {
+        guard var lastPoint = points.last else {
             return
         }
         
         var colors: [UIColor] = [.blue, .cyan, .green, .orange, .purple, .magenta, .brown]
-        var startPoint = last
-        var i = 0
         let unrelativeCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         
-        for point in points {
-            let shape = CAShapeLayer()
+        for (index, point) in points.enumerated() {
+            let path = makeBezierPath(for: lastPoint, point, unrelativeCenter)
+            let shape = makeShapeLayer(with: path.cgPath, of: colors[index].cgColor)
             layer.addSublayer(shape)
-            shape.opacity = 1
-            shape.lineWidth = 2
-            shape.lineJoin = kCALineJoinMiter
-            shape.fillColor = colors[i].cgColor
-            
-            let path = UIBezierPath()
-            path.move(to: startPoint)
-            path.addLine(to: point)
-            path.addLine(to: unrelativeCenter)
-            path.close()
-            
-            shape.path = path.cgPath
-            i = i + 1
-            startPoint = point
+            lastPoint = point
         }
+    }
+    
+    private func makeShapeLayer(with path: CGPath, of color: CGColor) -> CAShapeLayer {
+        let shape = CAShapeLayer()
+        shape.opacity = 1
+        shape.lineWidth = 1
+        shape.lineJoin = kCALineJoinMiter
+        shape.fillColor = color
+        shape.path = path
+        
+        return shape
+    }
+    
+    private func makeBezierPath(for points: CGPoint...) -> UIBezierPath {
+        let path = UIBezierPath()
+        
+        guard let first = points.first else {
+            return path
+        }
+        
+        path.move(to: first)
+        for point in points.dropFirst() {
+            path.addLine(to: point)
+        }
+        path.close()
+        
+        return path
     }
     
     private func computedPoints(for choices: [String]) -> [CGPoint] {
         let r: Double = Double(frame.width)
         let unrelativeCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         var points: [CGPoint] = []
+        let shift = shiftAlignment.degrees()
         
         for i in 0..<choices.count {
-            let shift = shiftAlignment.degrees()
-            let angle: Double = Double(shift + (360 / choices.count / 2) + (i * 360 / choices.count))
-            let radAngle = angle * .pi / 180.0
-            var point = CGPoint.zero
-            point.x = CGFloat(Double(unrelativeCenter.x) + r * cos(radAngle))
-            point.y = CGFloat(Double(unrelativeCenter.y) + r * sin(radAngle))
-            points.append(point)
+            points.append(makePoint(at: i, outOf: choices.count, shift: shift, center: unrelativeCenter, r: r))
         }
         
         return points
+    }
+    
+    private func makePoint(at index: Int, outOf: Int, shift: Int, center: CGPoint, r: Double) -> CGPoint {
+        let angle: Double = Double(shift + (360 / outOf / 2) + (index * 360 / outOf))
+        let radAngle = angle * .pi / 180.0
+        
+        return CGPoint(x: CGFloat(Double(center.x) + r * cos(radAngle)),
+                       y: CGFloat(Double(center.y) + r * sin(radAngle)))
     }
     
     private func cleanSublayers() {
