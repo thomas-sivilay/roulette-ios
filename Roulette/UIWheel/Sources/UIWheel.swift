@@ -49,12 +49,18 @@ public final class UIWheel: UIView {
         }
     }
     
+    var animatingLayer: CALayer = CALayer()
+    var fixedLayer: CALayer = CALayer()
+    
     // MARK: - Initializers
     
     public override init(frame: CGRect) {
         self.choices = ["1", "2", "3", "4"]
         self.shiftAlignment = .bottom
         super.init(frame: frame)
+        let frame = CGRect(x: 0, y: 0, width: layer.frame.width, height: layer.frame.height)
+        self.animatingLayer.frame = frame
+        self.fixedLayer.frame = frame
         setUp()
         drawSublayers()
     }
@@ -67,6 +73,20 @@ public final class UIWheel: UIView {
     
     // MARK: - Methods
     
+    public func animate() {
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(value: Double.pi * 2 * 3)
+        rotationAnimation.duration = 4
+        rotationAnimation.isCumulative = true
+        rotationAnimation.repeatCount = 1
+        rotationAnimation.timingFunction =
+            CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        rotationAnimation.isRemovedOnCompletion = true
+        animatingLayer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
+    
+    // MARK: Private
+    
     private func setUp() {
         clipsToBounds = true
         layer.cornerRadius = frame.width / 2
@@ -74,7 +94,11 @@ public final class UIWheel: UIView {
     
     private func drawSublayers() {
         cleanSublayers()
-        drawSliceShapeLayers(with: computedPoints(for: choices), on: layer)
+        layer.addSublayer(animatingLayer)
+        layer.addSublayer(fixedLayer)
+        drawSliceShapeLayers(with: computedPoints(for: choices), on: animatingLayer)
+        drawCursorLayer(on: fixedLayer)
+        animatingLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     
     private func drawSliceShapeLayers(with points: [CGPoint], on layer: CALayer) {
@@ -91,6 +115,17 @@ public final class UIWheel: UIView {
             layer.addSublayer(shape)
             lastPoint = point
         }
+    }
+    
+    private func drawCursorLayer(on layer: CALayer) {
+        let height = frame.height / 10
+        let width = frame.width / 10
+        let top = CGPoint(x: frame.width / 2, y: frame.height - height)
+        let bottomLeft = CGPoint(x: frame.width / 2 - width / 2, y: frame.height)
+        let bottomRight = CGPoint(x: frame.width / 2 + width / 2, y: frame.height)
+        let path = makeBezierPath(for: top, bottomLeft, bottomRight)
+        let shape = makeShapeLayer(with: path.cgPath, of: UIColor.black.cgColor)
+        layer.addSublayer(shape)
     }
     
     private func makeShapeLayer(with path: CGPath, of color: CGColor) -> CAShapeLayer {
@@ -121,7 +156,7 @@ public final class UIWheel: UIView {
     }
     
     private func computedPoints(for choices: [String]) -> [CGPoint] {
-        let r: Double = Double(frame.width)
+        let r = Double(frame.width)
         let unrelativeCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         var points: [CGPoint] = []
         let shift = shiftAlignment.degrees()
