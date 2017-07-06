@@ -68,7 +68,7 @@ public final class UIWheel: UIView, UIWheelAnimatable {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-      
+    
     // MARK: - Methods
     
     public func animate() {
