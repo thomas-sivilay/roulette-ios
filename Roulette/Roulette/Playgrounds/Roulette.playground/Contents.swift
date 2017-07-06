@@ -10,7 +10,8 @@ class ViewController:UIViewController{
     }
     
     let wheelView = UIWheel(frame: CGRect(x: 20, y: 20, width: 320, height: 320))
-    var tap: UIGestureRecognizer?
+    var tap: UITapGestureRecognizer?
+    var pan: UIPanGestureRecognizer?
     
     func setUp() {
         view.backgroundColor = .white
@@ -19,13 +20,30 @@ class ViewController:UIViewController{
         wheelView.choices = ["1", "2", "3", "4", "5", "6"]
         view.addSubview(wheelView)
         
-        tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.sampleTapGestureTapped(recognizer:)))
+        tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGestureTapped(recognizer:)))
+        
+        pan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.panGestureTapped(recognizer:)))
+        
         wheelView.addGestureRecognizer(tap!)
+        wheelView.addGestureRecognizer(pan!)
     }
     
     @objc
-    func sampleTapGestureTapped(recognizer: UITapGestureRecognizer) {
+    func tapGestureTapped(recognizer: UITapGestureRecognizer) {
         wheelView.animate()
+    }
+    
+    @objc
+    func panGestureTapped(recognizer: UIPanGestureRecognizer) {
+        let t = recognizer.velocity(in: self.view)
+        
+        if recognizer.state == UIGestureRecognizerState.ended {
+            let xPoints = wheelView.frame.width
+            let velocityX = t.x
+            let duration = Double(abs(xPoints / velocityX))
+            print(duration)
+            wheelView.animate(with: duration)
+        }
     }
 }
 

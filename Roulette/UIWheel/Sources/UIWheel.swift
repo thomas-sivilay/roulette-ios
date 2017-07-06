@@ -75,6 +75,10 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         animator.animate()
     }
     
+    public func animate(with duration: Double) {
+        animator.animate(with: duration)
+    }
+    
     // MARK: Private
         
     private func setUp() {
