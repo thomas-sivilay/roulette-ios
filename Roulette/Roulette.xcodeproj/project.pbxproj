@@ -20,6 +20,8 @@
 		C8B0E42D1F0502A200BF266A /* SpinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E42C1F0502A200BF266A /* SpinView.swift */; };
 		C8B0E42F1F0502A900BF266A /* SpinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E42E1F0502A900BF266A /* SpinViewModel.swift */; };
 		C8B0E4311F0502B100BF266A /* SpinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B0E4301F0502B100BF266A /* SpinCoordinator.swift */; };
+		C8C067601F0E5A1A000AFF18 /* UIWheelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C0675F1F0E5A1A000AFF18 /* UIWheelAnimator.swift */; };
+		C8C067621F0E5D27000AFF18 /* UIWheelAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C067611F0E5D27000AFF18 /* UIWheelAnimatable.swift */; };
 		C8D1F6341F0102420094F445 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6301F0100A10094F445 /* RxSwift.framework */; };
 		C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6311F0100A10094F445 /* RxCocoa.framework */; };
 		C8D1F6391F011AEA0094F445 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F6381F011AEA0094F445 /* HomeView.swift */; };
@@ -101,6 +103,8 @@
 		C8B0E42C1F0502A200BF266A /* SpinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
 		C8B0E42E1F0502A900BF266A /* SpinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinViewModel.swift; sourceTree = "<group>"; };
 		C8B0E4301F0502B100BF266A /* SpinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinCoordinator.swift; sourceTree = "<group>"; };
+		C8C0675F1F0E5A1A000AFF18 /* UIWheelAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWheelAnimator.swift; sourceTree = "<group>"; };
+		C8C067611F0E5D27000AFF18 /* UIWheelAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWheelAnimatable.swift; sourceTree = "<group>"; };
 		C8D1F6301F0100A10094F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C8D1F6311F0100A10094F445 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C8D1F6331F0101630094F445 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				C86CBB461F0B8F9A00BBB46C /* UIWheel.swift */,
+				C8C0675F1F0E5A1A000AFF18 /* UIWheelAnimator.swift */,
+				C8C067611F0E5D27000AFF18 /* UIWheelAnimatable.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -575,6 +581,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C067621F0E5D27000AFF18 /* UIWheelAnimatable.swift in Sources */,
+				C8C067601F0E5A1A000AFF18 /* UIWheelAnimator.swift in Sources */,
 				C86CBB471F0B8F9A00BBB46C /* UIWheel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

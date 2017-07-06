@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class UIWheel: UIView {
+public final class UIWheel: UIView, UIWheelAnimatable {
     
     // MARK: - Nested
     
@@ -45,22 +45,22 @@ public final class UIWheel: UIView {
     
     public var choices: [String] {
         didSet {
+            animator = UIWheelDefaultAnimator(animateLayer: animatingLayer, choices: choices.count)
             drawSublayers()
         }
     }
     
-    var animatingLayer: CALayer = CALayer()
-    var fixedLayer: CALayer = CALayer()
+    var animator: UIWheelAnimator
+    var animatingLayer = CALayer()
+    var fixedLayer = CALayer()
     
     // MARK: - Initializers
     
     public override init(frame: CGRect) {
         self.choices = ["1", "2", "3", "4"]
         self.shiftAlignment = .bottom
+        self.animator = UIWheelDefaultAnimator(animateLayer: animatingLayer, choices: choices.count)
         super.init(frame: frame)
-        let frame = CGRect(x: 0, y: 0, width: layer.frame.width, height: layer.frame.height)
-        self.animatingLayer.frame = frame
-        self.fixedLayer.frame = frame
         setUp()
         drawSublayers()
     }
@@ -68,52 +68,34 @@ public final class UIWheel: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - View Lifecycle
-    
+      
     // MARK: - Methods
     
     public func animate() {
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        
-        let angle = Double(360 / choices.count)
-        print("angle: \(angle)")
-        let radAngle = Double(angle * .pi / 180.0)
-        print("rad angle: \(radAngle)")
-        let random = Double(randomInt(min: 10, max: 30))
-        print("random: \(random)")
-        let value = radAngle * random
-        print("value: \(value)")
-        
-        rotationAnimation.toValue = NSNumber(value: value)
-        rotationAnimation.duration = 4
-        rotationAnimation.isCumulative = true
-        rotationAnimation.repeatCount = 1
-        rotationAnimation.fillMode = kCAFillModeForwards
-        rotationAnimation.timingFunction =
-            CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        rotationAnimation.isRemovedOnCompletion = false
-        animatingLayer.add(rotationAnimation, forKey: "rotationAnimation")
+        animator.animate()
     }
     
     // MARK: Private
-    
-    private func randomInt(min: Int, max:Int) -> Int {
-        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
-    }
-    
+        
     private func setUp() {
+        let frame = CGRect(x: 0, y: 0, width: layer.frame.width, height: layer.frame.height)
+        animatingLayer.frame = frame
+        fixedLayer.frame = frame
+        
         clipsToBounds = true
         layer.cornerRadius = frame.width / 2
     }
     
-    private func drawSublayers() {
-        cleanSublayers()
+    private func addSublayers() {
         layer.addSublayer(animatingLayer)
         layer.addSublayer(fixedLayer)
+    }
+    
+    private func drawSublayers() {
+        cleanSublayers()
+        addSublayers()
         drawSliceShapeLayers(with: computedPoints(for: choices), on: animatingLayer)
         drawCursorLayer(on: fixedLayer)
-        animatingLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     
     private func drawSliceShapeLayers(with points: [CGPoint], on layer: CALayer) {

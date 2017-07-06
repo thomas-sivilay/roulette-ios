@@ -16,7 +16,7 @@ class ViewController:UIViewController{
         view.backgroundColor = .white
         
         wheelView.backgroundColor = .black
-        wheelView.choices = ["1", "2", "3", "4", "5"]
+        wheelView.choices = ["1", "2", "3", "4", "5", "6"]
         view.addSubview(wheelView)
         
         tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.sampleTapGestureTapped(recognizer:)))
