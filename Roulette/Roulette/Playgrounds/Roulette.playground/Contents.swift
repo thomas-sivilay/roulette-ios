@@ -35,14 +35,11 @@ class ViewController:UIViewController{
     
     @objc
     func panGestureTapped(recognizer: UIPanGestureRecognizer) {
-        let t = recognizer.velocity(in: self.view)
-        
         if recognizer.state == UIGestureRecognizerState.ended {
-            let xPoints = wheelView.frame.width
-            let velocityX = t.x
-            let duration = Double(abs(xPoints / velocityX))
-            print(duration)
-            wheelView.animate(with: duration)
+            let t = recognizer.velocity(in: self.view)
+            let velocityX = Float(t.y) / 1000
+            print(velocityX)
+            wheelView.animate(velocity: velocityX)
         }
     }
 }

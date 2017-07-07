@@ -50,6 +50,8 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         }
     }
     
+    public var currentSelectedIndex: String
+    
     var animator: UIWheelAnimator
     var animatingLayer = CALayer()
     var fixedLayer = CALayer()
@@ -60,6 +62,7 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         self.choices = ["1", "2", "3", "4"]
         self.shiftAlignment = .bottom
         self.animator = UIWheelDefaultAnimator(animateLayer: animatingLayer, choices: choices.count)
+        self.currentSelectedIndex = ""
         super.init(frame: frame)
         setUp()
         drawSublayers()
@@ -75,8 +78,12 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         animator.animate()
     }
     
-    public func animate(with duration: Double) {
-        animator.animate(with: duration)
+    public func animate(velocity: Float) {
+        animator.animate(velocity: velocity)
+    }
+    
+    public func animate(duration: Float, velocity: Float) {
+        animator.animate(duration: duration, velocity: velocity)
     }
     
     // MARK: Private
