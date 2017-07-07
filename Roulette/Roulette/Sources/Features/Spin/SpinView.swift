@@ -8,6 +8,8 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import UIWheel
 
 final class SpinView: UIView {
     
@@ -24,6 +26,13 @@ final class SpinView: UIView {
     var rx_action: Observable<SpinView.Action> {
         return action.asObservable()
     }
+    
+    private let label = UILabel()
+    private let wheelView = UIWheel(frame: CGRect(x: 0, y: 0, width: 320, height: 320))
+    private var tap: UITapGestureRecognizer?
+    private var pan: UIPanGestureRecognizer?
+    private var t: Observable<Int> = Observable.empty()
+    private var v: Variable<Int> = Variable<Int>(0)
     
     // MARK: - Initializers
     
@@ -55,6 +64,43 @@ final class SpinView: UIView {
         backgroundColor = .white
         
         setUpCancelButton()
+        setUpWheel()
+        setUpLabel()
+    }
+    
+    private func setUpWheel() {
+        wheelView.backgroundColor = .black
+        wheelView.choices = ["1", "2", "3", "4", "5", "6"]
+        addSubview(wheelView)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(SpinView.tapGestureTapped(recognizer:)))
+        
+        pan = UIPanGestureRecognizer(target: self, action: #selector(SpinView.panGestureTapped(recognizer:)))
+        
+        wheelView.addGestureRecognizer(tap!)
+        wheelView.addGestureRecognizer(pan!)
+        
+//        wheelView.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(100)
+//            make.left.right.equalToSuperview()
+//            make.height.equalTo(superview?.snp.width ?? 300)
+//        }
+        
+    }
+    
+    private func setUpLabel() {
+        addSubview(label)
+        label.snp.makeConstraints { make in
+            make.top.equalTo(wheelView.snp.bottom)
+            make.left.right.equalToSuperview()
+        }
+        
+        wheelView.currentSelectedIndex
+            .map { value in
+                return String(value)
+            }
+            .bind(to: label.rx.text)
+            .disposed(by: bag)
     }
     
     private func setUpCancelButton() {
@@ -77,5 +123,19 @@ final class SpinView: UIView {
                 self?.action.onNext(.cancel)
             })
             .disposed(by: bag)
+    }
+    
+    @objc
+    func tapGestureTapped(recognizer: UITapGestureRecognizer) {
+        wheelView.animate()
+    }
+    
+    @objc
+    func panGestureTapped(recognizer: UIPanGestureRecognizer) {
+        if recognizer.state == UIGestureRecognizerState.ended {
+            let t = recognizer.velocity(in: self)
+            let velocityX = Float(t.y) / 1000
+            wheelView.animate(velocity: velocityX)
+        }
     }
 }

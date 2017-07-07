@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double UIWheelVersionNumber;
 FOUNDATION_EXPORT const unsigned char UIWheelVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <UIWheel/PublicHeader.h>
-
-

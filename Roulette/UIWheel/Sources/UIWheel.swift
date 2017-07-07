@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 public final class UIWheel: UIView, UIWheelAnimatable {
     
@@ -50,7 +51,9 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         }
     }
     
-    public var currentSelectedIndex: String
+    public var currentSelectedIndex: Observable<Int> {
+        return animator.currentIndex
+    }
     
     var animator: UIWheelAnimator
     var animatingLayer = CALayer()
@@ -62,7 +65,6 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         self.choices = ["1", "2", "3", "4"]
         self.shiftAlignment = .bottom
         self.animator = UIWheelDefaultAnimator(animateLayer: animatingLayer, choices: choices.count)
-        self.currentSelectedIndex = ""
         super.init(frame: frame)
         setUp()
         drawSublayers()

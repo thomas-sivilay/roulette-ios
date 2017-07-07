@@ -1,9 +1,8 @@
 import UIKit
 import PlaygroundSupport
 import UIWheel
-import SpriteKit
 
-class ViewController:UIViewController{
+class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()

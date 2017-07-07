@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol UIWheelAnimator {
+    var currentIndex: Observable<Int> { get }
+    var animating: Bool { get }
     var animateLayer: CALayer { get }
     func animate(duration: Float, velocity: Float)
     func animate(velocity: Float)
@@ -28,14 +31,26 @@ final class UIWheelDefaultAnimator: UIWheelAnimator {
     
     // MARK: - Properties
     
+    var animating: Bool = false
     var animateLayer: CALayer
     var choices: Int
+    var currentIndex: Observable<Int>
+    var rotatingAnimation = CABasicAnimation()
     
     // MARK: - Initializer
     
     init(animateLayer: CALayer, choices: Int) {
         self.animateLayer = animateLayer
         self.choices = choices
+//        let rot = presentation.debug().map { layer -> Int in
+//            if let layer = layer {
+//                return Int(layer)
+//            } else {
+//                return 0
+//            }
+//        }
+//        self.currentIndex = rot.debug()
+        self.currentIndex = Observable.just(4)
     }
     
     // MARK: - Methods
@@ -45,15 +60,15 @@ final class UIWheelDefaultAnimator: UIWheelAnimator {
     }
     
     func animate(velocity: Float) {
-        animate(duration: Constants.defaultAnimationDuration, velocity: velocity)
+        animate(duration: Constants.defaultAnimationDuration, velocity: abs(velocity))
     }
     
     func animate(duration: Float, velocity: Float) {
         let rotationAngle = getRandomAngle(with: choices, velocity: velocity)
         let currentAngle = animateLayer.value(forKeyPath: Constants.rotationAnimationKeyPath) as? Double
-        let rotationAnimation = makeRotationAnimation(fromValue: currentAngle!, byValue: rotationAngle, duration: duration)
+        rotatingAnimation = makeRotationAnimation(fromValue: currentAngle!, byValue: rotationAngle, duration: duration)
         animateLayer.setValue(currentAngle! + Double(rotationAngle), forKeyPath: Constants.rotationAnimationKeyPath)
-        animateLayer.add(rotationAnimation, forKey: Constants.rotationAnimationKey)
+        animateLayer.add(rotatingAnimation, forKey: Constants.rotationAnimationKey)
     }
     
     // MARK: Private
