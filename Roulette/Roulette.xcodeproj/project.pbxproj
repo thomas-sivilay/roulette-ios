@@ -25,6 +25,11 @@
 		C8C067641F0F95F5000AFF18 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6301F0100A10094F445 /* RxSwift.framework */; };
 		C8C067651F0F95F8000AFF18 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6311F0100A10094F445 /* RxCocoa.framework */; };
 		C8C067671F0F9846000AFF18 /* CALayer+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C067661F0F9846000AFF18 /* CALayer+Rx.swift */; };
+		C8C067761F0FCF58000AFF18 /* UIWheelView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C0676D1F0FCF58000AFF18 /* UIWheelView.framework */; };
+		C8C0677D1F0FCF58000AFF18 /* UIWheelViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C0677C1F0FCF58000AFF18 /* UIWheelViewTests.swift */; };
+		C8C0677F1F0FCF58000AFF18 /* UIWheelView.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C0676F1F0FCF58000AFF18 /* UIWheelView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8C067821F0FCF58000AFF18 /* UIWheelView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C0676D1F0FCF58000AFF18 /* UIWheelView.framework */; };
+		C8C067831F0FCF58000AFF18 /* UIWheelView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8C0676D1F0FCF58000AFF18 /* UIWheelView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8D1F6341F0102420094F445 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6301F0100A10094F445 /* RxSwift.framework */; };
 		C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D1F6311F0100A10094F445 /* RxCocoa.framework */; };
 		C8D1F6391F011AEA0094F445 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1F6381F011AEA0094F445 /* HomeView.swift */; };
@@ -67,6 +72,27 @@
 			remoteGlobalIDString = C86CBB261F0B8F7600BBB46C;
 			remoteInfo = UIWheel;
 		};
+		C8C067771F0FCF58000AFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8D81AEA1F00F522000D5375 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8C0676C1F0FCF58000AFF18;
+			remoteInfo = UIWheelView;
+		};
+		C8C067791F0FCF58000AFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8D81AEA1F00F522000D5375 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8D81AF11F00F522000D5375;
+			remoteInfo = Roulette;
+		};
+		C8C067801F0FCF58000AFF18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8D81AEA1F00F522000D5375 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8C0676C1F0FCF58000AFF18;
+			remoteInfo = UIWheelView;
+		};
 		C8D81B071F00F522000D5375 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C8D81AEA1F00F522000D5375 /* Project object */;
@@ -84,6 +110,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C86CBB3D1F0B8F7600BBB46C /* UIWheel.framework in Embed Frameworks */,
+				C8C067831F0FCF58000AFF18 /* UIWheelView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +136,12 @@
 		C8C0675F1F0E5A1A000AFF18 /* UIWheelAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWheelAnimator.swift; sourceTree = "<group>"; };
 		C8C067611F0E5D27000AFF18 /* UIWheelAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWheelAnimatable.swift; sourceTree = "<group>"; };
 		C8C067661F0F9846000AFF18 /* CALayer+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Rx.swift"; sourceTree = "<group>"; };
+		C8C0676D1F0FCF58000AFF18 /* UIWheelView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIWheelView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8C0676F1F0FCF58000AFF18 /* UIWheelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIWheelView.h; sourceTree = "<group>"; };
+		C8C067701F0FCF58000AFF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8C067751F0FCF58000AFF18 /* UIWheelViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIWheelViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8C0677C1F0FCF58000AFF18 /* UIWheelViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWheelViewTests.swift; sourceTree = "<group>"; };
+		C8C0677E1F0FCF58000AFF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D1F6301F0100A10094F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C8D1F6311F0100A10094F445 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C8D1F6331F0101630094F445 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
@@ -152,6 +185,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C8C067691F0FCF58000AFF18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8C067721F0FCF58000AFF18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C067761F0FCF58000AFF18 /* UIWheelView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D81AEF1F00F522000D5375 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -161,6 +209,7 @@
 				C8D1F6351F0102420094F445 /* RxCocoa.framework in Frameworks */,
 				C86CBB3C1F0B8F7600BBB46C /* UIWheel.framework in Frameworks */,
 				C8D1F6471F0142C50094F445 /* SnapKit.framework in Frameworks */,
+				C8C067821F0FCF58000AFF18 /* UIWheelView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +296,40 @@
 			children = (
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8C0676E1F0FCF58000AFF18 /* UIWheelView */ = {
+			isa = PBXGroup;
+			children = (
+				C8C0678A1F0FCF63000AFF18 /* Sources */,
+				C8C0676F1F0FCF58000AFF18 /* UIWheelView.h */,
+				C8C067701F0FCF58000AFF18 /* Info.plist */,
+			);
+			path = UIWheelView;
+			sourceTree = "<group>";
+		};
+		C8C0677B1F0FCF58000AFF18 /* UIWheelViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				C8C0678B1F0FCF6A000AFF18 /* Sources */,
+				C8C0677E1F0FCF58000AFF18 /* Info.plist */,
+			);
+			path = UIWheelViewTests;
+			sourceTree = "<group>";
+		};
+		C8C0678A1F0FCF63000AFF18 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C8C0678B1F0FCF6A000AFF18 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C8C0677C1F0FCF58000AFF18 /* UIWheelViewTests.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		C8D1F62B1F00F6510094F445 /* Sources */ = {
@@ -352,6 +435,8 @@
 				C8D81B091F00F522000D5375 /* RouletteTests */,
 				C86CBB281F0B8F7600BBB46C /* UIWheel */,
 				C86CBB351F0B8F7600BBB46C /* UIWheelTests */,
+				C8C0676E1F0FCF58000AFF18 /* UIWheelView */,
+				C8C0677B1F0FCF58000AFF18 /* UIWheelViewTests */,
 				C8D81AF31F00F522000D5375 /* Products */,
 				C8D1F62F1F0100A00094F445 /* Frameworks */,
 			);
@@ -364,6 +449,8 @@
 				C8D81B061F00F522000D5375 /* RouletteTests.xctest */,
 				C86CBB271F0B8F7600BBB46C /* UIWheel.framework */,
 				C86CBB2F1F0B8F7600BBB46C /* UIWheelTests.xctest */,
+				C8C0676D1F0FCF58000AFF18 /* UIWheelView.framework */,
+				C8C067751F0FCF58000AFF18 /* UIWheelViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -408,6 +495,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C8C0676A1F0FCF58000AFF18 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C0677F1F0FCF58000AFF18 /* UIWheelView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -448,6 +543,43 @@
 			productReference = C86CBB2F1F0B8F7600BBB46C /* UIWheelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C8C0676C1F0FCF58000AFF18 /* UIWheelView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8C067841F0FCF58000AFF18 /* Build configuration list for PBXNativeTarget "UIWheelView" */;
+			buildPhases = (
+				C8C067681F0FCF58000AFF18 /* Sources */,
+				C8C067691F0FCF58000AFF18 /* Frameworks */,
+				C8C0676A1F0FCF58000AFF18 /* Headers */,
+				C8C0676B1F0FCF58000AFF18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIWheelView;
+			productName = UIWheelView;
+			productReference = C8C0676D1F0FCF58000AFF18 /* UIWheelView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C8C067741F0FCF58000AFF18 /* UIWheelViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8C067871F0FCF58000AFF18 /* Build configuration list for PBXNativeTarget "UIWheelViewTests" */;
+			buildPhases = (
+				C8C067711F0FCF58000AFF18 /* Sources */,
+				C8C067721F0FCF58000AFF18 /* Frameworks */,
+				C8C067731F0FCF58000AFF18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8C067781F0FCF58000AFF18 /* PBXTargetDependency */,
+				C8C0677A1F0FCF58000AFF18 /* PBXTargetDependency */,
+			);
+			name = UIWheelViewTests;
+			productName = UIWheelViewTests;
+			productReference = C8C067751F0FCF58000AFF18 /* UIWheelViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C8D81AF11F00F522000D5375 /* Roulette */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8D81B0F1F00F522000D5375 /* Build configuration list for PBXNativeTarget "Roulette" */;
@@ -462,6 +594,7 @@
 			);
 			dependencies = (
 				C86CBB3B1F0B8F7600BBB46C /* PBXTargetDependency */,
+				C8C067811F0FCF58000AFF18 /* PBXTargetDependency */,
 			);
 			name = Roulette;
 			productName = Roulette;
@@ -504,6 +637,13 @@
 						CreatedOnToolsVersion = 9.0;
 						TestTargetID = C8D81AF11F00F522000D5375;
 					};
+					C8C0676C1F0FCF58000AFF18 = {
+						CreatedOnToolsVersion = 9.0;
+					};
+					C8C067741F0FCF58000AFF18 = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = C8D81AF11F00F522000D5375;
+					};
 					C8D81AF11F00F522000D5375 = {
 						CreatedOnToolsVersion = 9.0;
 					};
@@ -530,6 +670,8 @@
 				C8D81B051F00F522000D5375 /* RouletteTests */,
 				C86CBB261F0B8F7600BBB46C /* UIWheel */,
 				C86CBB2E1F0B8F7600BBB46C /* UIWheelTests */,
+				C8C0676C1F0FCF58000AFF18 /* UIWheelView */,
+				C8C067741F0FCF58000AFF18 /* UIWheelViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -543,6 +685,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C86CBB2D1F0B8F7600BBB46C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8C0676B1F0FCF58000AFF18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8C067731F0FCF58000AFF18 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -611,6 +767,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C8C067681F0FCF58000AFF18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8C067711F0FCF58000AFF18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C0677D1F0FCF58000AFF18 /* UIWheelViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D81AEE1F00F522000D5375 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -661,6 +832,21 @@
 			isa = PBXTargetDependency;
 			target = C86CBB261F0B8F7600BBB46C /* UIWheel */;
 			targetProxy = C86CBB3A1F0B8F7600BBB46C /* PBXContainerItemProxy */;
+		};
+		C8C067781F0FCF58000AFF18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8C0676C1F0FCF58000AFF18 /* UIWheelView */;
+			targetProxy = C8C067771F0FCF58000AFF18 /* PBXContainerItemProxy */;
+		};
+		C8C0677A1F0FCF58000AFF18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8D81AF11F00F522000D5375 /* Roulette */;
+			targetProxy = C8C067791F0FCF58000AFF18 /* PBXContainerItemProxy */;
+		};
+		C8C067811F0FCF58000AFF18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8C0676C1F0FCF58000AFF18 /* UIWheelView */;
+			targetProxy = C8C067801F0FCF58000AFF18 /* PBXContainerItemProxy */;
 		};
 		C8D81B081F00F522000D5375 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -761,6 +947,82 @@
 				INFOPLIST_FILE = UIWheelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TS.UIWheelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roulette.app/Roulette";
+			};
+			name = Release;
+		};
+		C8C067851F0FCF58000AFF18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4DHLLS39V8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = UIWheelView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TS.UIWheelView;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C8C067861F0FCF58000AFF18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4DHLLS39V8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = UIWheelView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TS.UIWheelView;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C8C067881F0FCF58000AFF18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4DHLLS39V8;
+				INFOPLIST_FILE = UIWheelViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TS.UIWheelViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roulette.app/Roulette";
+			};
+			name = Debug;
+		};
+		C8C067891F0FCF58000AFF18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4DHLLS39V8;
+				INFOPLIST_FILE = UIWheelViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TS.UIWheelViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -961,6 +1223,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C8C067841F0FCF58000AFF18 /* Build configuration list for PBXNativeTarget "UIWheelView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8C067851F0FCF58000AFF18 /* Debug */,
+				C8C067861F0FCF58000AFF18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C8C067871F0FCF58000AFF18 /* Build configuration list for PBXNativeTarget "UIWheelViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8C067881F0FCF58000AFF18 /* Debug */,
+				C8C067891F0FCF58000AFF18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		C8D81AED1F00F522000D5375 /* Build configuration list for PBXProject "Roulette" */ = {
 			isa = XCConfigurationList;
