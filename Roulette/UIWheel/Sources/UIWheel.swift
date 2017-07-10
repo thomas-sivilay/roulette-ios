@@ -120,9 +120,11 @@ public final class UIWheel: UIView, UIWheelAnimatable {
         let unrelativeCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         
         for (index, point) in points.enumerated() {
+            let view = UIView()
             let path = makeBezierPath(for: lastPoint, point, unrelativeCenter)
             let shape = makeShapeLayer(with: path.cgPath, of: colors[index].cgColor)
-            layer.addSublayer(shape)
+//            layer.addSublayer(shape)
+            
             lastPoint = point
         }
     }
