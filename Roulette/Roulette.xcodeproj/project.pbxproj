@@ -142,6 +142,7 @@
 		C8C067751F0FCF58000AFF18 /* UIWheelViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIWheelViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C0677C1F0FCF58000AFF18 /* UIWheelViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWheelViewTests.swift; sourceTree = "<group>"; };
 		C8C0677E1F0FCF58000AFF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8C0678C1F1510E5000AFF18 /* Tests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Tests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C8D1F6301F0100A10094F445 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C8D1F6311F0100A10094F445 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C8D1F6331F0101630094F445 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
@@ -275,6 +276,7 @@
 		C86CBB491F0B91EA00BBB46C /* Playgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				C8C0678C1F1510E5000AFF18 /* Tests.playground */,
 				C86CBB4A1F0B92AE00BBB46C /* Roulette.playground */,
 			);
 			path = Playgrounds;
